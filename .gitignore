@@ -1,0 +1,9 @@
+/config
+/logs
+/plugins
+variables.json
+extra.ipynb
+*.env
+**/.env
+**/node_modules/
+**/__pycache__
