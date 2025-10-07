@@ -198,7 +198,7 @@ docker compose logs -f frontend
 MIT (or your preferred license)
 
 ---
-##Output
+## Output
 If stock forecasting available in Analytics schema
 <img width="1498" height="928" alt="image" src="https://github.com/user-attachments/assets/64cb2c69-3f02-4a85-b373-2076b417b0f8" />
 
