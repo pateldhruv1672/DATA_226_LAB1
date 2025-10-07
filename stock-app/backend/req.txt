@@ -1,9 +1,0 @@
-fastapi
-uvicorn[standard]
-pydantic
-pydantic-settings
-numpy
-sentence-transformers
-scikit-learn
-snowflake-connector-python
-requests
