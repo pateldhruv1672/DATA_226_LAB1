@@ -7,3 +7,4 @@ extra.ipynb
 **/.env
 **/node_modules/
 **/__pycache__
+/stock-app
