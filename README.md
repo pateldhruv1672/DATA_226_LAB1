@@ -198,6 +198,14 @@ docker compose logs -f frontend
 MIT (or your preferred license)
 
 ---
+##Output
+If stock forecasting available in Analytics schema
+<img width="1498" height="928" alt="image" src="https://github.com/user-attachments/assets/64cb2c69-3f02-4a85-b373-2076b417b0f8" />
+
+If not, It would trigger the etl + forecasting airflow pipeline and then generate foreassting graph
+<img width="1498" height="928" alt="image" src="https://github.com/user-attachments/assets/b9990e5c-6955-49c3-8cfd-9e82daaf6cd3" />
+
+
 
 ## 🙌 Credits
 
