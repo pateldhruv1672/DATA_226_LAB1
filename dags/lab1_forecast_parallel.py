@@ -21,7 +21,7 @@ from airflow.utils import timezone
 # ----------------------------- Constants & Defaults -----------------------------
 
 DEFAULT_ARGS = {
-    "owner": "ml-eng",
+    "owner": "Dhruv-Drashti",
     "depends_on_past": False,
     "retries": 1,
     "retry_delay": timedelta(minutes=2),
@@ -178,8 +178,8 @@ def fanout_forecast(cfg: Dict) -> List[Dict]:
 def stage_train_one(kwargs: Dict) -> str:
     """
     Train model for ONE symbol:
-      - CREATE OR REPLACE VIEW ANALYTICS.V_TRAIN_<SAFE>
-      - CREATE OR REPLACE SNOWFLAKE.ML.FORECAST MODEL_FORECAST_<SAFE>
+      - CREATE OR REPLACE VIEW ANALYTICS.V_TRAIN_<SYMBOL>
+      - CREATE OR REPLACE SNOWFLAKE.ML.FORECAST MODEL_FORECAST_<SYMBOL>
     """
     logger = logging.getLogger("airflow.task")
     src_schema = kwargs["source_schema"]
@@ -367,9 +367,9 @@ def stage_forecast_one(kwargs: Dict) -> str:
 
 with DAG(
     dag_id="snowflake_train_and_forecast_parallel",
-    description="TRAIN models then FORECAST per symbol in ANALYTICS (parallel via dynamic mapping + pool).",
+    description="TRAIN models then FORECAST per symbol in ANALYTICS (parallel).",
     start_date=timezone.datetime(2024, 1, 1),
-    schedule=None,  # set to a Dataset or cron when upstream freshness is guaranteed
+    schedule=None,
     catchup=False,
     default_args=DEFAULT_ARGS,
     tags=["snowflake", "forecast", "parallel"],

@@ -27,7 +27,7 @@ from airflow.utils.trigger_rule import TriggerRule
 # ----------------------------- Constants & Defaults -----------------------------
 
 DEFAULT_ARGS = {
-    "owner": "you",
+    "owner": "Dhruv-Drashti",
     "depends_on_past": False,
     "retries": 1,
     "retry_delay": timedelta(minutes=2),
@@ -320,7 +320,7 @@ with DAG(
 
     trigger_train_forecast = TriggerDagRunOperator(
         task_id="trigger_train_forecast",
-        trigger_dag_id="snowflake_train_and_forecast",
+        trigger_dag_id="snowflake_train_and_forecast_parallel",
         wait_for_completion=True,
         allowed_states=[DagRunState.SUCCESS],
         failed_states=[DagRunState.FAILED],
