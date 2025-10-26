@@ -270,6 +270,7 @@ def load(cfg: Dict, tuples: List[Tuple]) -> int:
                     VALUES (%s, TO_DATE(%s), %s, %s, %s, %s, %s)
                 """
                 CHUNK = 10_000
+                cur.execute("BEGIN")
                 for i in range(0, len(rows), CHUNK):
                     cur.executemany(insert_sql, rows[i:i+CHUNK])
 
@@ -289,13 +290,14 @@ def load(cfg: Dict, tuples: List[Tuple]) -> int:
                 """)
 
                 total += len(rows)
+                cur.execute("COMMIT")
 
-        conn.commit()
+        
         logger.info("✅ Loaded %d rows across %d tables", total, len(grouped))
         return total
 
     except Exception as e:
-        conn.rollback()
+        conn.execute("ROLLBACK")
         logger.error("❌ DML phase failed; rolled back: %s", e, exc_info=True)
         raise
     finally:
