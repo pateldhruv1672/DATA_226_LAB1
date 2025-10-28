@@ -8,3 +8,10 @@ extra.ipynb
 **/node_modules/
 **/__pycache__
 /stock-app
+/dags/__pycache__
+/dags/arch.puml
+/dags/lab1_etl.py
+/dags/lab1_elt2.py
+/dags/lab1_forecast.py
+/dags/lab1_forecast_parallel.py
+/dags/week_6_assignment.py
